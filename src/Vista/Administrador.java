@@ -174,10 +174,11 @@ public class Administrador extends Application{
         GridPane paned = new GridPane();
         paned.setHgap(10);
         paned.setVgap(10);
+        Image image = new Image("/Recursos/dell.png");
         txt_total = new TextField();
-        btn_eliminar = new Button("    Eliminar    ");
+        btn_eliminar = new Button("", new ImageView(image));
         btn_imprimir = new Button("    Imprimir    ");
-        
+                
         paned.add(new Label("Total"), 1, 1);
         paned.add(txt_total, 2, 1);
         paned.add(btn_eliminar, 2, 3);
