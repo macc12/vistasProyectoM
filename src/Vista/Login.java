@@ -21,24 +21,37 @@ import sun.security.util.Password;
 /**
  *
  * @author Marco
+ * @version 1.0
  */
-public class Login extends Application{
+public class Login {
     private GridPane pane;
     private Button btn_log;
     private Scene scene;
     private BorderPane root;
     private TextField user;
     private PasswordField pass; 
-    @Override
-    public void start(Stage primaryStage) throws Exception {            
+    /**
+     * inicia y agrega elementos al Scene
+     * @throws Exception 
+     */
+    public void ini() throws Exception {            
         root = new BorderPane();
         root.setCenter(getPane());
-        scene = new Scene(root, 250, 250);
-        primaryStage.setTitle("POS");
-        primaryStage.setScene(scene);
-        primaryStage.show();
-        
+        scene = new Scene(root, 250, 250);                
     }
+    /**
+     * muestra el Stage
+     * @param stage 
+     */
+    public void show(Stage stage){
+        stage.setTitle("POS");
+        stage.setScene(scene);
+        stage.show();
+    }
+    /**
+     * crea un Pane en el que se agregan elementos
+     * @return Pane
+     */
     private Pane getPane(){
         pane = new GridPane();
         user = new TextField();
@@ -56,16 +69,25 @@ public class Login extends Application{
         pane.add(btn_log, 1, 2);
         GridPane.setHalignment(btn_log, HPos.RIGHT);
         return pane;        
-    }
-    public static void main(String[] args) {
-        Application.launch(args);
-    }
+    }    
+    /**
+     * permite agregar un evento al boton de ingreso
+     * @param event 
+     */
     public void addEventBtn(EventHandler event){
         btn_log.setOnAction((javafx.event.EventHandler<ActionEvent>) event);
     }
+    /**
+     * Getter
+     * @return usuario
+     */
     public String GetUser(){
         return user.getText();
     }
+    /**
+     * Getter
+     * @return password
+     */
     public String GetPass(){
         return pass.getText();
     }
