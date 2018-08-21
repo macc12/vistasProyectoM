@@ -1,6 +1,7 @@
 package Vista;
 
 
+import Modelo.DataBean;
 import java.beans.EventHandler;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
@@ -30,14 +31,18 @@ public class Login {
     private BorderPane root;
     private TextField user;
     private PasswordField pass; 
+    private DataBean dta;
     /**
      * inicia y agrega elementos al Scene
      * @throws Exception 
      */
-    public void ini() throws Exception {            
+   
+    public  Login(DataBean dta) throws Exception {            
+        this.dta=dta;
         root = new BorderPane();
         root.setCenter(getPane());
-        scene = new Scene(root, 250, 250);                
+        scene = new Scene(root, 250, 250);
+        
     }
     /**
      * muestra el Stage
@@ -74,8 +79,8 @@ public class Login {
      * permite agregar un evento al boton de ingreso
      * @param event 
      */
-    public void addEventBtn(EventHandler event){
-        btn_log.setOnAction((javafx.event.EventHandler<ActionEvent>) event);
+    public Button addEventBtn(){
+        return btn_log;
     }
     /**
      * Getter

@@ -1,5 +1,6 @@
 package Vista;
 
+import Modelo.DataBean;
 import java.beans.EventHandler;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -56,12 +57,14 @@ public class Cajero {
     private TextField txt_cambio;
     private TextField txt_total;
     private Button btn_eliminar;
-    private Button btn_imprimir;    
+    private Button btn_imprimir;   
+    private DataBean dt;
     /**
      * Constructor vacio
      * @throws FileNotFoundException 
      */
-    public Cajero() throws FileNotFoundException {        
+    public Cajero(DataBean data) throws FileNotFoundException {    
+        this.dt=data;
         root = new VBox();        
         root.getChildren().add(getHBox());
         root.getChildren().add(getVBox());
