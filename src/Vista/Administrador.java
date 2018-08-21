@@ -92,7 +92,7 @@ public class Administrador {
         scene = new Scene(root, 1000, 700);        
     }
     /**
-     * muestra la evntana de inventario
+     * muestra la ventana de inventario
      * @param stage 
      */
     public void showInvVentana(Stage stage){
