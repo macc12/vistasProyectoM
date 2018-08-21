@@ -62,8 +62,7 @@ public class Cajero {
      * @throws FileNotFoundException 
      */
     public Cajero() throws FileNotFoundException {        
-        root = new VBox();
-        System.out.println("hola");
+        root = new VBox();        
         root.getChildren().add(getHBox());
         root.getChildren().add(getVBox());
         root.getChildren().add(getHBox2());                
