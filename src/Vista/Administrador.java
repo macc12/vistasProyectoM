@@ -1,7 +1,9 @@
 package Vista;
 
+import Modelo.DataBean;
 import java.beans.EventHandler;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.util.Set;
 import javafx.application.Application;
 import javafx.collections.FXCollections;
@@ -48,6 +50,7 @@ public class Administrador {
     private Button btn_sales;
     private Button btn_invent;
     private Button btn_repor;
+    private Button btn_agregar;
     private TableView table;
     private TableColumn nro;
     private TableColumn codigo;
@@ -63,7 +66,23 @@ public class Administrador {
     private TextField txt_cantidad;
     private TextField txt_nombre;   
     private TextField txt_precio;        
-    private Button btn_agregar;
+
+
+    public String getTxt_produc() {
+        return txt_produc.getText();
+    }
+    public String getTxt_cantidad() {
+        return txt_cantidad.getText();
+    }
+
+    public String getTxt_nombre() {
+        return txt_nombre.getText();
+    }
+
+    public String getTxt_precio() {
+        return txt_precio.getText();
+    }
+   
     private HBox hboxg;
     private Stage stage;
     private Button btn_VentProduc;
@@ -79,9 +98,18 @@ public class Administrador {
     private GridPane grLine;
     private XYChart.Series series2[];
     private LineChart<String, Number> line;
+      private DataBean dt;
     /**
      * crea un Scene y le agrega elementos
-     */    
+     */   
+        public Administrador(DataBean data) throws FileNotFoundException {    
+        this.dt=data;
+        root = new VBox();        
+        root.getChildren().add(getHBox());
+        root.getChildren().add(getVBox());
+        root.getChildren().add(getHBox2());                
+        scene = new Scene(root, 1000, 700);        
+    }
     public void invVentana() {
         root = new VBox();        
         root.getChildren().add(getHBox());
@@ -98,7 +126,7 @@ public class Administrador {
     public void showInvVentana(Stage stage){
         this.stage = stage;
         stage.setResizable(false);
-        stage.setTitle("POS");
+        stage.setTitle("invVentana");
         stage.setScene(scene);
         stage.show();
     }
@@ -210,11 +238,11 @@ public class Administrador {
         GridPane panec = new GridPane();
         panec.setHgap(10);
         panec.setVgap(10);
-        txt_cantidad = new TextField();
+        txt_nombre = new TextField();
         txt_precio = new TextField();      
         
         panec.add(new Label("Nombre"), 0, 1);
-        panec.add(txt_cantidad, 1, 1);        
+        panec.add(txt_nombre, 1, 1);        
         panec.add(new Label("Precio"), 0, 3);
         panec.add(txt_precio, 1, 3);
         
@@ -456,8 +484,8 @@ public class Administrador {
      * permite agregar un evento al boton inventario
      * @param event 
      */    
-    public void addEventBtnInv(EventHandler event){
-        btn_invent.setOnAction((javafx.event.EventHandler<ActionEvent>) event);
+    public Button addEventBtnInv(){
+       return btn_invent;
     }
     /**
      * permite agregar un evento al boton Reporte
@@ -470,8 +498,8 @@ public class Administrador {
      * permite agregar un evento al boton Agregar
      * @param event 
      */
-    public void addEventBtnAgregar(EventHandler event){
-        btn_agregar.setOnAction((javafx.event.EventHandler<ActionEvent>) event);
+    public Button addEventBtnAgregar(){
+    return btn_agregar;
     }
     /**
      * permite agregar un evento al boton Ventas producion

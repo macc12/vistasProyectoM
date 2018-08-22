@@ -19,7 +19,7 @@ import javafx.stage.Stage;
  * @version 1.0
  * @author Marco
  */
-public class App extends Application{
+public class App extends Application {
     public static void main(String[] args) {
         launch(args);
     }
@@ -34,7 +34,7 @@ public class App extends Application{
        Cajero caj = null;
        Login lo = new Login(dataBean);
        // LLamar el primer controlador
-       Controlador cont = new Controlador(lo, ad, caj, dataBean);
+       Controlador cont = new Controlador(lo, dataBean);
        cont.show();      
     }
     
