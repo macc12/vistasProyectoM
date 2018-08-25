@@ -5,37 +5,41 @@
  */
 package App;
 
-import Controlador.Controlador;
 import Modelo.DataBean;
-import Vista.Administrador;
-import Vista.Cajero;
-import Vista.Login;
 import java.io.FileNotFoundException;
+import java.net.URL;
+import java.util.ResourceBundle;
 import javafx.application.Application;
 import static javafx.application.Application.launch;
+import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 /**
  * @version 1.0
  * @author Marco
  */
-public class App extends Application {
+public class App extends Application implements Initializable{
     public static void main(String[] args) {
         launch(args);
     }
       
     @Override
     public void start(Stage primaryStage) throws Exception {
-        
-        // ambito de sesión / ámbito de aplicación ¡inicializar beans!
-        // necesita ser pasado el controlador de la aplicacion
-       DataBean dataBean = new DataBean(primaryStage);
-       Administrador ad = null;
-       Cajero caj = null;
-       Login lo = new Login(dataBean);
-       // LLamar el primer controlador
-       Controlador cont = new Controlador(lo, dataBean);
-       cont.show();      
+        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getClassLoader().getResource("E:/6to semestre/Bases de datos/ProyectoM/src/Vista/Inicio.fxml"));
+        Parent root1 = (Parent) fxmlLoader.load();
+        Stage stage = new Stage();
+        stage.initModality(Modality.APPLICATION_MODAL);
+        stage.setTitle("Ayuda");
+        stage.setScene(new Scene(root1)); 
+    }
+
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
 }
